@@ -1,0 +1,70 @@
+name: agent-evaluation
+description: |
+  Evaluates the effectiveness of a single agent (or skill) by defining
+  observable metrics, collecting evidence from recent session outputs, scoring
+  performance, and producing a structured improvement proposal when needed.
+
+steps:
+  - Identify the agent (or skill) under evaluation and read its definition file
+  - Read the agent's stated responsibilities from its `system_prompt`
+  - Read the agent's `triggers` to understand when it should participate
+  - Review session outputs for evidence of the agent's participation and impact
+    (decisions influenced, issues filed, spec changes driven, errors caught, etc.).
+    Review all process runs since the last evaluation, or the last 5 runs if more
+    have occurred — whichever set is smaller.
+  - Define or retrieve the agent's 3–5 effectiveness metrics from
+    `docs/agent-registry.md`. If no metrics exist yet, define them now:
+      - Each metric must be observable from session output (not subjective)
+      - Each metric must connect directly to one of the agent's stated responsibilities
+      - Each metric must have a clear threshold for 🟢/🟡/🔴
+  - Score the agent on each metric using the evidence collected:
+      - 🟢 Effective: evidence shows the agent consistently meeting the metric
+      - 🟡 Needs Improvement: evidence shows partial or inconsistent performance
+      - 🔴 Ineffective: little or no evidence the metric is being met
+  - Identify the root cause of any 🟡 or 🔴 score:
+      - Is the system prompt unclear or under-specified for this responsibility?
+      - Is the agent missing a skill it needs?
+      - Are the triggers causing the agent to be invoked at the wrong time?
+      - Is the agent's scope too broad, diluting focus?
+  - For each 🟡 or 🔴 score, produce an improvement proposal (see output format)
+  - Determine the overall agent health: HEALTHY / AT RISK / CRITICAL
+      - HEALTHY: all metrics 🟢 or at most one 🟡
+      - AT RISK: two or more 🟡, or one 🔴
+      - CRITICAL: two or more 🔴
+
+output_format: |
+  ## Agent Evaluation: <Agent Name>
+
+  **Evaluation date**: <YYYY-MM-DD>
+  **Sessions reviewed**: <list of process run identifiers>
+
+  ### Metrics
+
+  | # | Metric | Threshold | Evidence | Score |
+  |---|---|---|---|---|
+  | 1 | <metric description> | <what 🟢/🟡/🔴 looks like> | <specific evidence from sessions> | 🟢/🟡/🔴 |
+  | 2 | … | … | … | … |
+
+  ### Root Causes (for 🟡 and 🔴 scores)
+  - **Metric <N>** (<score>): <root cause explanation>
+
+  ### Improvement Proposals
+  For each 🟡 or 🔴:
+
+  #### Proposal for Metric <N>
+  **Type of change**: system_prompt edit / skills addition / trigger adjustment / scope reduction
+  **Before**:
+  ```
+  <current text from the agent or skill definition>
+  ```
+  **After**:
+  ```
+  <proposed replacement text>
+  ```
+  **Expected impact**: <how this change will move the metric from 🟡/🔴 toward 🟢>
+
+  ### Overall Health: HEALTHY / AT RISK / CRITICAL
+  **Summary**: <2–3 sentence narrative of the agent's current state and top priority action>
+
+used_by:
+  - HRAgent

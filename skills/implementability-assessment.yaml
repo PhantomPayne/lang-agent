@@ -1,0 +1,39 @@
+name: implementability-assessment
+description: |
+  Evaluates how difficult a language feature is to implement in a compiler,
+  and identifies any semantic ambiguities that would make implementation
+  incorrect or non-deterministic.
+
+steps:
+  - Read the feature specification
+  - Describe the parsing strategy (top-down, precedence climbing, etc.) for any
+    new syntax introduced
+  - Describe the name resolution rules (scoping, shadowing, forward references)
+  - Describe the type-checking algorithm (inference rules, unification steps,
+    error conditions)
+  - Describe the IR representation and lowering strategy
+  - Describe the code generation strategy for at least one target (e.g. native, WASM, VM)
+  - Identify any step above that is ambiguous in the spec and propose a clarification
+  - Classify implementation difficulty: Low / Medium / High / Very-High
+  - Propose the minimal implementation that covers the core of the feature
+    (the "good-enough-to-ship v0" version)
+
+output_format: |
+  ## Implementability Assessment: <Feature Name>
+
+  **Parsing**: <description>
+  **Name resolution**: <description>
+  **Type checking**: <description>
+  **IR / Lowering**: <description>
+  **Code generation**: <description>
+
+  **Spec ambiguities found**:
+  - <ambiguity> → <proposed resolution>
+
+  **Implementation difficulty**: Low / Medium / High / Very-High
+  **Justification**: <1–2 sentences>
+
+  **Minimal v0 implementation**: <description of what to build first>
+
+used_by:
+  - Compiler Specialist

@@ -1,0 +1,36 @@
+name: beginner-perspective
+description: |
+  Evaluates a feature, API, or piece of documentation from the perspective of a
+  developer who is new to this language but experienced in at least one other language.
+
+steps:
+  - Read the feature description or documentation as if seeing it for the first time
+  - Write down every question that arises while reading (do not look up answers first)
+  - Attempt to write a small program using the feature based on documentation alone
+  - Record every point where you were unsure what to write
+  - Record every error message you received (or would receive) and whether it was helpful
+  - Identify the "happy path" — the thing most beginners will try first — and verify it works
+  - Identify the "obvious mistake" — the thing most beginners will get wrong first — and verify the error is clear
+  - Rate the feature's learnability: Easy / Moderate / Difficult, with justification
+
+output_format: |
+  ## Beginner Perspective: <Feature Name>
+
+  **Questions while reading**:
+  1. <question>
+  ...
+
+  **Attempt notes** (what I tried, what worked, what didn't):
+  <narrative>
+
+  **Error messages encountered**:
+  - <error>: Helpful / Unhelpful — <why>
+
+  **Happy path verdict**: Works / Broken / Confusing
+  **Obvious mistake verdict**: Clear error / Confusing error / Silent failure
+
+  **Learnability**: Easy / Moderate / Difficult
+  **Top suggestion for improvement**: <one actionable suggestion>
+
+used_by:
+  - New User

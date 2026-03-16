@@ -1,0 +1,35 @@
+name: lateral-thinking
+description: |
+  Generates unconventional, cross-domain ideas for a language design problem
+  by deliberately breaking the assumptions embedded in the original framing.
+
+steps:
+  - State the design problem in one sentence
+  - List the 5 assumptions that are implicit in the problem statement
+  - For each assumption, ask "what if this were false?" and explore the implications
+  - Identify an analogy from a completely different domain (biology, music, architecture,
+    game design, cooking, …) and map it onto the language design problem
+  - Propose at least 3 unconventional alternatives to the conventional solution
+  - For each alternative, describe: the wild version, a tamed-down practical version,
+    and what existing language does something like this
+  - Identify which alternative would be the most fun to prototype and why
+
+output_format: |
+  ## Lateral Thinking: <Problem Statement>
+
+  **Hidden assumptions**:
+  1. <assumption> → If false: <implication>
+  ...
+
+  **Domain analogy**: <domain> — <mapping>
+
+  **Wild alternatives**:
+  1. **<name>** (wild): <description>
+     (tamed): <description>
+     (precedent): <existing language or tool>
+  ...
+
+  **Most fun to prototype**: <alternative name> — <reason>
+
+used_by:
+  - Chaos Agent

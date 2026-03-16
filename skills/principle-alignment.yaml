@@ -1,0 +1,31 @@
+name: principle-alignment
+description: |
+  Evaluates a proposed language feature or design decision against the
+  established Core Principles and determines whether it is consistent,
+  in tension, or in direct conflict with those principles.
+
+steps:
+  - Read the Core Principles document in full
+  - For the feature under review, write a one-sentence summary of its purpose
+  - For each Core Principle, write one of:
+      - SUPPORTS: <how the feature actively advances this principle>
+      - NEUTRAL: <why the feature has no meaningful interaction with this principle>
+      - TENSION: <the trade-off between the feature and this principle; justify why the trade-off is acceptable>
+      - VIOLATES: <how the feature contradicts this principle; this blocks acceptance>
+  - If any VIOLATES are found, propose a redesigned feature that removes the violation
+  - Produce a principle alignment verdict: PASS / CONDITIONAL PASS (with conditions) / FAIL
+
+output_format: |
+  ## Principle Alignment: <Feature Name>
+
+  | Principle | Verdict | Notes |
+  |---|---|---|
+  | <principle 1> | SUPPORTS / NEUTRAL / TENSION / VIOLATES | <brief explanation> |
+  ...
+
+  **Overall Verdict**: PASS / CONDITIONAL PASS / FAIL
+  **Conditions** (if applicable): <list of required changes before the feature can pass>
+
+used_by:
+  - Architect
+  - PM (during final acceptance review)

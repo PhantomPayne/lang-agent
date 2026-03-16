@@ -1,0 +1,50 @@
+name: dx-audit
+description: |
+  Systematically evaluates the developer experience at each stage of the
+  developer journey for a feature or the language as a whole.
+
+stages:
+  - name: Discovery
+    questions:
+      - How does a developer find out this feature exists?
+      - Is it in the getting-started guide, the feature index, or only discoverable by search?
+  - name: Installation / Setup
+    questions:
+      - Does using this feature require additional toolchain setup?
+      - Are the setup steps clearly documented and automatable?
+  - name: First Use
+    questions:
+      - What is the simplest program that demonstrates this feature?
+      - Can a developer write it correctly from memory after reading the docs once?
+  - name: Productive Use
+    questions:
+      - What does a production-quality use of this feature look like?
+      - Are there common patterns that should have library or language support?
+  - name: Debugging
+    questions:
+      - What does the debugging experience look like when this feature misbehaves?
+      - Are stack traces, error messages, and debugger views clear?
+  - name: Community / Support
+    questions:
+      - Where do developers go for help with this feature?
+      - Are there good answers for the top 5 questions a user would ask?
+
+output_format: |
+  ## DX Audit: <Feature or Scope>
+
+  | Stage | Rating | Top friction point | Improvement idea |
+  |---|---|---|---|
+  | Discovery | 😊/😐/😞 | <description> | <idea> |
+  | Installation | 😊/😐/😞 | <description> | <idea> |
+  | First Use | 😊/😐/😞 | <description> | <idea> |
+  | Productive Use | 😊/😐/😞 | <description> | <idea> |
+  | Debugging | 😊/😐/😞 | <description> | <idea> |
+  | Community | 😊/😐/😞 | <description> | <idea> |
+
+  **Overall DX score**: <average emoji> — <1-sentence summary>
+  **Top priority improvement**: <one actionable item>
+
+used_by:
+  - Tooling Master
+  - New User
+  - Evangelist
