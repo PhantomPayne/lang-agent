@@ -1,0 +1,88 @@
+name: agent-design
+description: |
+  Produces a complete, well-specified agent YAML file in response to a detected
+  capability gap. The output is ready to commit directly to `agents/` after PM
+  and Architect review.
+
+steps:
+  - Read the capability gap description provided by the HR Agent
+  - Verify the gap cannot be adequately addressed by improving an existing agent
+    (check every agent's `system_prompt` and `skills` list for relevant coverage)
+  - Name the new agent: choose a short, descriptive role name (PascalCase for
+    the `name` field, kebab-case for the filename)
+  - Define the agent's `role`: a 2–4 word job title
+  - Write the `description`: 2–3 sentences explaining what the agent does and
+    why it exists — this is the human-readable summary, not the LLM prompt
+  - Write the `system_prompt`: structure it as a numbered list of responsibilities,
+    each with:
+      - A bold heading stating the responsibility
+      - 2–4 bullet points detailing exactly how the agent carries it out
+      - The specific output the agent produces for that responsibility
+  - Define `skills`: list any existing skills the agent will use. If the agent
+    needs a skill that does not yet exist, flag it as `# TODO: create this skill`
+    and record it in the **New skills required** table at the bottom of the output
+    so it is tracked and not forgotten
+  - Define `triggers`: list the specific events or conditions that cause this
+    agent to be invoked. Be precise — vague triggers lead to under-use or over-use
+  - Define `success_criteria`: 3–5 observable metrics that the HR Agent will use
+    to evaluate this agent in future review cycles
+  - Review the draft against the existing agent roster to ensure:
+      - No existing agent already covers this role
+      - The new agent's triggers do not create duplicate invocations with another agent
+      - The system prompt does not ask the agent to do something outside its stated role
+
+output_format: |
+  ## Agent Design Proposal
+
+  **Gap being addressed**: <one paragraph from HR Agent's gap articulation>
+  **Existing agents reviewed and found insufficient**: <list with reasons>
+
+  ---
+
+  ```yaml
+  name: <PascalCase name>
+  role: <2–4 word job title>
+  description: |
+    <2–3 sentences: what the agent does and why it exists>
+
+  system_prompt: |
+    You are the <role> for a programming language design team.
+    Your responsibilities are:
+
+    1. **<Responsibility heading>** – <explanation>
+       - <bullet>
+       - <bullet>
+
+    2. **<Responsibility heading>** – <explanation>
+       - <bullet>
+       - <bullet>
+
+    [continue for all responsibilities]
+
+    Tone: <characterisation of how the agent communicates>
+
+  skills:
+    - <skill-name>
+    - <skill-name>  # TODO: create this skill — <one-line description>
+
+  triggers:
+    - <specific event or condition>
+    - <specific event or condition>
+
+  success_criteria:
+    - <observable metric with threshold>
+    - <observable metric with threshold>
+  ```
+
+  ---
+
+  **New skills required** (if any):
+  | Skill name | Description | Priority |
+  |---|---|---|
+  | `<skill-name>` | <what it does> | High / Medium / Low |
+
+  **Suggested filename**: `agents/<kebab-case-name>.yaml`
+  **Recommended first evaluation**: after <N> process runs
+
+used_by:
+  - HRAgent

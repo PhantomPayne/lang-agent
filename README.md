@@ -17,6 +17,8 @@ lang-agent/
 ├── docs/                 # Living design documents produced by the team
 │   ├── core-principles.md
 │   ├── feature-inventory.md
+│   ├── agent-registry.md # Agent/skill health scores and improvement history
+│   ├── hr-reviews/       # HR Review Reports (one per evaluation cycle)
 │   ├── testing/          # Per-feature user testing reports
 │   └── dx-brainstorm/    # Notes from DX brainstorm sessions
 └── examples/             # Annotated code examples per feature
@@ -41,6 +43,7 @@ triggers that determine when it participates.
 | **Chaos Agent** | `agents/chaos-agent.yaml` | Wild ideas, assumption challenges, edge cases |
 | **Spec Writer** | `agents/spec-writer.yaml` | Precise written specifications, terminology, changelog |
 | **Security Advisor** | `agents/security-advisor.yaml` | Vulnerability patterns, safe-by-default design |
+| **HR Agent** | `agents/hr-agent.yaml` | Agent/skill evaluation metrics, improvement proposals, new agent design |
 
 ---
 
@@ -58,6 +61,7 @@ follow, the expected outputs, and success criteria.
 | **Example Generation** | `processes/example-generation.md` | After features reach `draft` status |
 | **User Testing** | `processes/user-testing.md` | After examples exist; before `accepted` |
 | **DX Brainstorm** | `processes/dx-brainstorm.md` | Once per milestone; triggered by DX issues |
+| **Agent Review** | `processes/agent-review.md` | Every 3–5 process runs; immediately on critical agent failure |
 
 ---
 
@@ -74,6 +78,8 @@ processes. They produce structured output that feeds into the next step.
 | **Implementability Assessment** | `skills/implementability-assessment.yaml` | Compiler Specialist |
 | **DX Audit** | `skills/dx-audit.yaml` | Tooling Master, New User, Evangelist |
 | **Lateral Thinking** | `skills/lateral-thinking.yaml` | Chaos Agent |
+| **Agent Evaluation** | `skills/agent-evaluation.yaml` | HR Agent |
+| **Agent Design** | `skills/agent-design.yaml` | HR Agent |
 
 ---
 
@@ -105,6 +111,7 @@ processes. They produce structured output that feeds into the next step.
 |---|---|---|
 | `docs/core-principles.md` | 🔴 Not started | The language's fundamental values |
 | `docs/feature-inventory.md` | 🔴 Not started | All features with labels and dependencies |
+| `docs/agent-registry.md` | 🟡 Template ready | Agent/skill health scores and improvement history |
 
 ---
 
