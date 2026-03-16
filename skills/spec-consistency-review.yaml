@@ -1,0 +1,34 @@
+name: spec-consistency-review
+description: |
+  Reviews a section of the language specification for internal consistency:
+  terminology, cross-references, grammar rules, and semantic rules.
+
+steps:
+  - Read the section under review
+  - Extract every defined term; verify each has exactly one definition in the spec
+  - Identify all cross-references to other spec sections; verify they are accurate
+  - Check for modal verb consistency ("must", "should", "may", "must not")
+  - Identify any prose that uses "implementation-defined" and verify it is intentional
+  - Check all grammar rules in the section for ambiguity
+  - Verify every normative statement has a corresponding example (or note it is missing)
+
+output_format: |
+  ## Spec Consistency Review: <Section Name>
+
+  ### Terminology Issues
+  - <term>: <issue description>
+
+  ### Cross-Reference Issues
+  - <reference>: <issue description>
+
+  ### Ambiguity Issues
+  - <location>: <description of ambiguity>
+
+  ### Missing Examples
+  - <normative statement>: needs an example
+
+  **Consistency verdict**: PASS / ISSUES FOUND (<count>)
+
+used_by:
+  - Spec Writer
+  - Architect
